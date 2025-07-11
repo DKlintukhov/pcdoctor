@@ -1,0 +1,11 @@
+[package]
+name = "PCDoctorBot"
+authors = ["Denis Klintukhov <denis.klintukhov@gmail.com>"]
+homepage = "https://github.com/DKlintukhov/PCDoctorBot"
+repository = "https://github.com/DKlintukhov/PCDoctorBot"
+license = "GNU"
+readme = "README.md"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
