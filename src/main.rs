@@ -17,8 +17,10 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
-use teloxide::{prelude::*, types::{KeyboardButton, KeyboardMarkup}};
+use teloxide::{
+    prelude::*,
+    types::{KeyboardButton, KeyboardMarkup},
+};
 
 fn main_menu_keyboard() -> KeyboardMarkup {
     let buttons = vec![
@@ -52,7 +54,7 @@ async fn main() {
 
     let bot = Bot::from_env();
 
-teloxide::repl(bot, |bot: Bot, msg: Message| async move {
+    teloxide::repl(bot, |bot: Bot, msg: Message| async move {
         let text = msg.text().unwrap_or_default();
 
         match text {
@@ -81,8 +83,7 @@ teloxide::repl(bot, |bot: Bot, msg: Message| async move {
                     .await?;
             }
             "❓ Другое" => {
-                bot.send_message(msg.chat.id, "Опишите ваш запрос:")
-                    .await?;
+                bot.send_message(msg.chat.id, "Опишите ваш запрос:").await?;
             }
             "⬅️ Назад" => {
                 let keyboard = main_menu_keyboard();
@@ -91,7 +92,8 @@ teloxide::repl(bot, |bot: Bot, msg: Message| async move {
                     .await?;
             }
             _ => {
-                bot.send_message(msg.chat.id, "Неизвестная команда. Используйте меню.").await?;
+                bot.send_message(msg.chat.id, "Неизвестная команда. Используйте меню.")
+                    .await?;
             }
         }
 
