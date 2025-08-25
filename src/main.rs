@@ -17,6 +17,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+
 use teloxide::{
     prelude::*,
     types::{KeyboardButton, KeyboardMarkup},
@@ -50,6 +51,7 @@ fn os_install_keyboard() -> KeyboardMarkup {
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().ok();
     pretty_env_logger::init();
 
     let bot = Bot::from_env();
