@@ -1,8 +1,8 @@
 [package]
-name = "PCDoctorBot"
+name = "PCDoctor"
 authors = ["Denis Klintukhov <denis.klintukhov@gmail.com>"]
-homepage = "https://github.com/DKlintukhov/PCDoctorBot"
-repository = "https://github.com/DKlintukhov/PCDoctorBot"
+homepage = "https://github.com/DKlintukhov/PCDoctor"
+repository = "https://github.com/DKlintukhov/PCDoctor"
 license = "GNU"
 readme = "README.md"
 version = "0.1.0"
