@@ -1,5 +1,5 @@
 /*
- *  This file is part of nzbget. See <https://github.com/DKlintukhov/PCDoctorBot>.
+ *  This file is part of nzbget. See <https://github.com/DKlintukhov/PCDoctor>.
  *
  *  Copyright (C) 2025 Denis <denis.klintukhov@gmail.com>
  *
