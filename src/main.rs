@@ -17,89 +17,25 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
+use std::fs;
+use std::io;
 use teloxide::{
     prelude::*,
     types::{KeyboardButton, KeyboardMarkup},
 };
+use serde_json;
+mod models;
+use models::{MenuConfig};
 
-fn main_menu_keyboard() -> KeyboardMarkup {
-    let buttons = vec![
-        vec![KeyboardButton::new("🖥️ Настройка ПК")],
-        vec![KeyboardButton::new("🐧 Установка ОС")],
-        vec![KeyboardButton::new("🌐 Разработка сайтов")],
-        vec![KeyboardButton::new("🖥️ Десктопные приложения")],
-        vec![KeyboardButton::new("🤖 Телеграм-боты")],
-        vec![
-            KeyboardButton::new("📞 Заказать звонок"),
-            KeyboardButton::new("📨 Оставить сообщение"),
-        ],
-    ];
-
-    KeyboardMarkup::new(buttons).resize_keyboard()
-}
-
-fn os_install_keyboard() -> KeyboardMarkup {
-    let buttons = vec![
-        vec![KeyboardButton::new("Windows")],
-        vec![KeyboardButton::new("Linux")],
-        vec![KeyboardButton::new("⬅️ Назад")],
-    ];
-
-    KeyboardMarkup::new(buttons).resize_keyboard()
-}
+static MENU_CONFIG: &str = "menu.json";
 
 #[tokio::main]
 async fn main() {
-    dotenvy::dotenv().ok();
-    pretty_env_logger::init();
+    // dotenvy::dotenv().ok();
+    // pretty_env_logger::init();
 
-    let bot = Bot::from_env();
-
-    teloxide::repl(bot, |bot: Bot, msg: Message| async move {
-        let text = msg.text().unwrap_or_default();
-
-        match text {
-            "/start" => {
-                let keyboard = main_menu_keyboard();
-                bot.send_message(msg.chat.id, "Выберите категорию помощи:")
-                    .reply_markup(keyboard)
-                    .await?;
-            }
-            "🖥️ Настройка ПК" => {
-                bot.send_message(msg.chat.id, "Опишите проблему с настройкой ПК:")
-                    .await?;
-            }
-            "🐧 Установка ОС" => {
-                let keyboard = os_install_keyboard();
-                bot.send_message(msg.chat.id, "Выберите ОС:")
-                    .reply_markup(keyboard)
-                    .await?;
-            }
-            "📞 Заказать звонок" => {
-                bot.send_message(msg.chat.id, "Введите ваш номер телефона, и мы перезвоним:")
-                    .await?;
-            }
-            "🎤 Оставить голосовое сообщение" => {
-                bot.send_message(msg.chat.id, "Запишите голосовое сообщение:")
-                    .await?;
-            }
-            "❓ Другое" => {
-                bot.send_message(msg.chat.id, "Опишите ваш запрос:").await?;
-            }
-            "⬅️ Назад" => {
-                let keyboard = main_menu_keyboard();
-                bot.send_message(msg.chat.id, "Главное меню:")
-                    .reply_markup(keyboard)
-                    .await?;
-            }
-            _ => {
-                bot.send_message(msg.chat.id, "Неизвестная команда. Используйте меню.")
-                    .await?;
-            }
-        }
-
-        Ok(())
-    })
-    .await;
+    //let bot = Bot::from_env();
+    let json_str = fs::read_to_string(MENU_CONFIG).unwrap();
+    let res = serde_json::from_str::<MenuConfig>(&json_str);
+    println!("{:?}", res);
 }
