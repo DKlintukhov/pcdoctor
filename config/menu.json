@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0",
   "menus": {
     "main": {
       "title": "🚀 PCDoctor - IT помощник\nВыберите услугу:",
@@ -9,40 +9,33 @@
           "id": "windows_setup",
           "title": "💻 Настройка Windows",
           "description": "Установка и настройка Windows",
-          "action": {
-            "OrderService": {
-              "service_type": "windows_setup"
-            }
-          },
           "price": 1500.0,
           "category": "Windows",
-          "emoji": "💻"
+          "icon": "💻"
         },
         {
           "id": "linux_setup",
           "title": "🐧 Настройка Linux",
           "description": "Установка и настройка Linux",
-          "action": {
-            "OrderService": {
-              "service_type": "linux_setup"
-            }
-          },
           "price": 2000.0,
           "category": "Linux",
-          "emoji": "🐧"
+          "icon": "🐧"
+        },
+        {
+          "id": "macos_os",
+          "title": "🍎 macOS",
+          "description": "Настройка macOS",
+          "price": 2500.0,
+          "category": "macOS",
+          "icon": "🍎"
         },
         {
           "id": "bot_development",
           "title": "🤖 Разработка ботов",
           "description": "Создание Telegram ботов",
-          "action": {
-            "OrderService": {
-              "service_type": "bot_development"
-            }
-          },
           "price": 5000.0,
           "category": "TelegramBots",
-          "emoji": "🤖"
+          "icon": "🤖"
         },
         {
           "id": "consultation",
@@ -51,20 +44,15 @@
           "action": "RequestConsultation",
           "price": null,
           "category": "Other",
-          "emoji": "📞"
+          "icon": "📞"
         },
         {
           "id": "contact",
           "title": "👨‍💻 Связаться",
           "description": "Не нашли нужную услугу? Напишите мне!",
-          "action": {
-            "ContactSupport": {
-              "contact_type": "direct"
-            }
-          },
           "price": null,
           "category": "Other",
-          "emoji": "👨‍💻"
+          "icon": "👨‍💻"
         },
         {
           "id": "prices",
@@ -73,11 +61,11 @@
           "action": "ViewPriceList",
           "price": null,
           "category": "Other",
-          "emoji": "💰"
+          "icon": "💰"
         }
       ]
     },
-    "contact": {
+    "contacts": {
       "title": "📞 Связь и консультации",
       "description": "Выберите способ связи",
       "items": [
@@ -85,53 +73,33 @@
           "id": "urgent_help",
           "title": "🆘 Срочная помощь",
           "description": "Срочный заказ или проблема",
-          "action": {
-            "ContactSupport": {
-              "contact_type": "urgent"
-            }
-          },
           "price": null,
           "category": "Other",
-          "emoji": "🆘"
+          "icon": "🆘"
         },
         {
           "id": "consultation_call",
           "title": "📞 Консультация по звонку",
           "description": "Обсудим вашу задачу по телефону",
-          "action": {
-            "ContactSupport": {
-              "contact_type": "phone"
-            }
-          },
           "price": null,
           "category": "Other",
-          "emoji": "📞"
+          "icon": "📞"
         },
         {
           "id": "chat_consultation",
           "title": "💬 Чат-консультация",
           "description": "Быстрый ответ в чате",
-          "action": {
-            "ContactSupport": {
-              "contact_type": "chat"
-            }
-          },
           "price": null,
           "category": "Other",
-          "emoji": "💬"
+          "icon": "💬"
         },
         {
           "id": "back_to_main",
           "title": "⬅️ Назад",
           "description": "Вернуться в главное меню",
-          "action": {
-            "ShowSubMenu": {
-              "menu_id": "main"
-            }
-          },
           "price": null,
           "category": "Other",
-          "emoji": "⬅️"
+          "icon": "⬅️"
         }
       ]
     }
