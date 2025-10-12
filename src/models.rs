@@ -17,7 +17,6 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -48,24 +47,25 @@ pub struct MenuItem {
 pub enum ServiceCategory {
     Windows,
     Linux,
-    macOS,
+    #[serde(rename = "macOS")]
+    MacOS,
     Development,
     TelegramBots,
     Other,
 }
-
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_add() {
-        assert_eq!(add(1, 2), 3);
-    }
+    fn test_macos_serialization() {
+        let macos = ServiceCategory::MacOS;
 
-    #[test]
-    fn test_bad_add() {
-        assert_eq!(bad_add(1, 2), 3);
+        let serialized = serde_json::to_string(&macos).unwrap();
+        assert_eq!(serialized, "\"macOS\"");
+
+        let deserialized: ServiceCategory = serde_json::from_str("\"macOS\"").unwrap();
+        assert!(matches!(deserialized, ServiceCategory::MacOS));
     }
 }
