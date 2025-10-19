@@ -17,15 +17,13 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use serde_json;
 use std::env;
-use std::fs;
 use teloxide::{
     prelude::*,
     types::{KeyboardButton, KeyboardMarkup},
 };
 mod models;
-use models::MenuConfig;
+use models::parse_menu;
 
 static MENU_CONFIG: &str = "menu.json";
 
@@ -40,8 +38,6 @@ async fn main() {
         .parent()
         .expect("Failed to get the app directory.")
         .join(MENU_CONFIG);
-    let json_str = fs::read_to_string(menu_conf_path).expect("Failed to read the config menu.");
-    let menu =
-        serde_json::from_str::<MenuConfig>(&json_str).expect("Failed to parse the config menu.");
+    let menu = parse_menu(&menu_conf_path).unwrap();
     println!("{:?}", menu);
 }

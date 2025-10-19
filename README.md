@@ -4,8 +4,8 @@ PCDoctor is a comprehensive technical support platform combining a Telegram bot 
 ## Installation
 ### Step 1: Clone the Repository
 ```bash
-git clone git@github.com:DKlintukhov/PCDoctor.git
-cd PCDoctor
+git clone git@github.com:DKlintukhov/pcdoctor.git
+cd pcdoctor
 ```
 
 ### Step 2: Install Rust Dependencies
@@ -33,6 +33,6 @@ cargo run
 ## Testing
 ### Unit Tests
 ```bash
-# Run Rust tests
+# Run tests
 cargo test
 ```
